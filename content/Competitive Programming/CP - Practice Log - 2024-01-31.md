@@ -1,6 +1,6 @@
 Time Created: 2025-10-24 15:46
 Status: #review 
-Tags: [[Programming Contests]]
+Tags: [[Competitive Programming Contests]]
 
 
 # Notes
