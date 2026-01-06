@@ -2,18 +2,18 @@
 DSA for interviewing (I wasted too much time on this I should retire but nah I gotta lock in and dominate in [[Edmonton]]).
 
 
-Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier studying swe (cs) at uwaterloo canada.
-Will upload my study and practice notes here.
-Please don't post meaningless comments, they will be deleted.
+Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier studying swe (cs) at uwaterloo canada.  
+Will upload my study and practice notes here.  
+Please don't post meaningless comments, they will be deleted.  
 
-> [!question] How is the marked difficulty defined?
-> `Easy`: I drink some porridge, glance at problem and mindsolve
-> `Medium`: Solved it entirely by myself, but took a while
-> `Hard`: Didn't solve it entirely myself
-> `WTF`: Discussion worthy, solution is cooked.
+> [!question]- How is the marked difficulty defined?
+> `Easy`: I drink some porridge, glance at problem and mindsolve  
+> `Medium`: Solved it entirely by myself, but took a while  
+> `Hard`: Didn't solve it entirely myself  
+> `WTF`: Discussion worthy, solution is cooked.  
 > `+` and `-` represents difficulty with respect to its tag
 > 
-> **Note 1**: I only feature problems that are worthy of learning/bookmarking (thus easy problems will not be featured often)
+> **Note 1**: I only feature problems that are worthy of learning/bookmarking (thus easy problems will not be featured often)  
 > **Note 2**: Will post all problems in Practice Logs, and specific problems if it's worth a separate note
 
 
