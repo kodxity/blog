@@ -201,10 +201,10 @@ plugins:
     options:
       provider: giscus
       options:
-        repo: TODO:username/repo-name
-        repoId: TODO:your-repo-id
+        repo: kodxity/blog
+        repoId: R_kgDOQJGQHQ
         category: Announcements
-        categoryId: TODO:your-category-id
+        categoryId: DIC_kwDOQJGQHc4Cx60y
         mapping: url
         strict: true
         reactionsEnabled: true
