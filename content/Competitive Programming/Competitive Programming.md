@@ -1,8 +1,4 @@
-
-DSA for interviewing (I wasted too much time on this I should retire but nah I gotta lock in and dominate in [[Edmonton]]).
-
-
-Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier studying swe (cs) at uwaterloo canada.  
+Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier studying CS at uwaterloo canada.  
 Will upload my study and practice notes here.  
 Please don't post meaningless comments, they will be deleted.  
 
