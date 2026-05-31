@@ -1,4 +1,4 @@
-Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier studying at uwaterloo canada.  
+Hi I'm [kodxity](https://codeforces.com/profile/kodxity), a weak oier at uwaterloo canada.  
 Will upload my study and practice notes here.  
 Please don't post meaningless comments, they will be deleted.  
 
