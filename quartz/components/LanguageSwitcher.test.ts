@@ -160,4 +160,17 @@ describe("LanguageSwitcher", () => {
     assert.match(script, /Not available in this language/)
     assert.match(script, /quartz-language/)
   })
+
+  test("includes UI chrome localization for Chinese", () => {
+    const script = String(Switcher.afterDOMLoaded ?? "")
+    assert.match(script, /Recent Notes/)
+    assert.match(script, /Graph View/)
+    assert.match(script, /Explorer/)
+    assert.match(script, /Search for something\.\.\./)
+    assert.match(script, /最近的笔记/)
+    assert.match(script, /关系图谱/)
+    assert.match(script, /探索/)
+    assert.match(script, /分钟阅读/)
+    assert.match(script, /static\/languageTitles\.json/)
+  })
 })
