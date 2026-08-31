@@ -17,6 +17,7 @@ Quartz comes with a wide variety of features out of the box. Most features are p
 - [[features/Citations|Citations]] — Academic citation support
 - [[Canvas]] — Render Obsidian Canvas files as interactive pages
 - [[Bases]] — Database-like views for your notes (tables, cards, galleries, and more)
+- [[features/language-switcher|Language Switcher]]: EN ↔ 中文 toggle
 
 ## Navigation & Discovery
 

@@ -473,7 +473,7 @@ export async function loadQuartzConfig(
 
   // Import built-in plugins
   const builtinPlugins = await import("../index")
-  const builtinTransformers: unknown[] = []
+  const builtinTransformers = [builtinPlugins.Languages()]
   const builtinEmitters = [
     builtinPlugins.ComponentResources(),
     builtinPlugins.Assets(),
@@ -631,8 +631,33 @@ export async function loadQuartzLayout(layoutOverrides?: {
   const enabledWithLayout = json.plugins.filter((e) => e.enabled && e.layout)
   const layoutConfig = json.layout ?? {}
 
+  // Built-in (non-plugin) components injected into layouts. The language
+  // switcher occupies the spot previously held by the reader-mode plugin in
+  // the left toolbar (priority 35, group "toolbar"). The language title
+  // replaces the external article-title plugin in beforeBody (priority 10)
+  // so the page title can switch together with the active language.
+  const { default: LanguageSwitcherModule } = await import("../../components/LanguageSwitcher")
+  const LanguageSwitcherConstructor = LanguageSwitcherModule as QuartzComponentConstructor
+  if (!componentRegistry.get("LanguageSwitcher")) {
+    componentRegistry.register("LanguageSwitcher", LanguageSwitcherConstructor, "builtin")
+  }
+  const { default: LanguageTitleModule } = await import("../../components/LanguageTitle")
+  const LanguageTitleConstructor = LanguageTitleModule as QuartzComponentConstructor
+  const layoutBuiltins: LayoutBuiltin[] = [
+    {
+      name: "language-switcher",
+      component: componentRegistry.instantiate(LanguageSwitcherConstructor),
+      layout: { position: "left", priority: 35, group: "toolbar" },
+    },
+    {
+      name: "language-title",
+      component: componentRegistry.instantiate(LanguageTitleConstructor),
+      layout: { position: "beforeBody", priority: 10 },
+    },
+  ]
+
   // Build default layout for all page types
-  const defaultLayout = buildLayoutForEntries(enabledWithLayout, layoutConfig)
+  const defaultLayout = buildLayoutForEntries(enabledWithLayout, layoutConfig, layoutBuiltins)
 
   // Build per-page-type overrides
   const byPageType: Record<string, Partial<FullPageLayout>> = {}
@@ -648,7 +673,7 @@ export async function loadQuartzLayout(layoutOverrides?: {
         })
       }
 
-      const ptLayout = buildLayoutForEntries(filteredEntries, layoutConfig)
+      const ptLayout = buildLayoutForEntries(filteredEntries, layoutConfig, layoutBuiltins)
 
       // Apply position overrides (empty array = clear position)
       if (override.positions) {
@@ -727,9 +752,16 @@ export async function loadQuartzLayout(layoutOverrides?: {
   return { defaults: mergedDefaults, byPageType: mergedByPageType }
 }
 
+interface LayoutBuiltin {
+  name: string
+  component: QuartzComponent
+  layout: PluginLayoutDeclaration
+}
+
 function buildLayoutForEntries(
   entries: PluginJsonEntry[],
   layoutConfig: LayoutConfig,
+  layoutBuiltins: LayoutBuiltin[] = [],
 ): Partial<FullPageLayout> {
   const positions: Record<
     string,
@@ -808,6 +840,18 @@ function buildLayoutForEntries(
         priority: layout.priority,
         group: layout.group,
         groupOptions: layout.groupOptions,
+      })
+    }
+  }
+
+  for (const builtin of layoutBuiltins) {
+    const posArray = positions[builtin.layout.position]
+    if (posArray) {
+      posArray.push({
+        component: builtin.component,
+        priority: builtin.layout.priority,
+        group: builtin.layout.group,
+        groupOptions: builtin.layout.groupOptions,
       })
     }
   }

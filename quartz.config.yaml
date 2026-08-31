@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: kodxity/blog
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -18,7 +18,7 @@ configuration:
     typography:
       header: Schibsted Grotesk
       body: Source Sans Pro
-      code: IBM Plex Mono
+      code: JetBrains Mono
     colors:
       lightMode:
         light: "#faf8f8"
@@ -159,7 +159,7 @@ plugins:
       position: right
       priority: 50
   - source: github:quartz-community/article-title
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 10
@@ -183,12 +183,6 @@ plugins:
     layout:
       position: left
       priority: 30
-      group: toolbar
-  - source: github:quartz-community/reader-mode
-    enabled: true
-    layout:
-      position: left
-      priority: 35
       group: toolbar
   - source: github:quartz-community/breadcrumbs
     enabled: true
@@ -263,7 +257,7 @@ plugins:
 layout:
   groups:
     toolbar:
-      priority: 35
+      priority: 15
       direction: row
       gap: 0.5rem
   byPageType:
@@ -274,13 +268,9 @@ layout:
         right: []
     content: {}
     folder:
-      exclude:
-        - reader-mode
       positions:
         right: []
     tag:
-      exclude:
-        - reader-mode
       positions:
         right: []
     canvas: {}

@@ -1,6 +1,13 @@
 ---
-title: Welcome to Quartz
+title: Home
+title-zh: 首页
+lang: en
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+Welcome to my blog!
+
+
+<!--LANG:zh-->
+
+欢迎来到我的博客！
+

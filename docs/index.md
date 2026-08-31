@@ -56,6 +56,7 @@ npx quartz build --serve
 - Simple JSX layouts and [[creating components|page components]]
 - [[SPA Routing|Ridiculously fast page loads]] and tiny bundle sizes
 - Fully-customizable parsing, filtering, and page generation through [[making plugins|plugins]]
+- [[features/language-switcher|Language Switcher]]: EN ↔ 中文 toggle; each note.md holds both languages, and quartz will automatically render based on language & page title switches with the language (get from frontmatter).
 
 For a comprehensive list of features, visit the [features page](./features/). You can read more about the _why_ behind these features on the [[philosophy]] page and a technical overview on the [[architecture]] page.
 
