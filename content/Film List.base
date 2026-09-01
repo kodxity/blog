@@ -1,0 +1,58 @@
+formulas:
+  rating: '"⭐".repeat(rating)'
+properties:
+  formula.rating:
+    displayName: Rating
+  status:
+    displayName: Status
+views:
+  - type: cards
+    name: Everything
+    filters:
+      and:
+        - topics.contains(link("Film List.base"))
+    order:
+      - file.name
+      - formula.rating
+      - status
+    sort:
+      - property: file.mtime
+        direction: DESC
+    image: note.image
+    cardSize: 200
+    imageAspectRatio: 0.7
+    imageFit: cover
+  - type: cards
+    name: Completed
+    filters:
+      and:
+        - topics.contains(link("Film List.base"))
+        - status == "completed"
+    order:
+      - file.name
+      - formula.rating
+      - status
+    sort:
+      - property: file.mtime
+        direction: DESC
+    image: note.image
+    cardSize: 200
+    imageAspectRatio: 0.7
+    imageFit: cover
+  - type: cards
+    name: Want to Watch
+    filters:
+      and:
+        - topics.contains(link("Film List.base"))
+        - status == "want to watch"
+    order:
+      - file.name
+      - formula.rating
+      - status
+    sort:
+      - property: file.mtime
+        direction: DESC
+    image: note.image
+    cardSize: 200
+    imageAspectRatio: 0.7
+    imageFit: cover

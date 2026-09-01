@@ -107,7 +107,7 @@ plugins:
     options: {}
     order: 45
   - source: github:quartz-community/encrypted-pages
-    enabled: false
+    enabled: true
   - source: github:quartz-community/stacked-pages
     enabled: false
     layout:
