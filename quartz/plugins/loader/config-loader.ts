@@ -704,28 +704,23 @@ export async function loadQuartzLayout(layoutOverrides?: {
   const HeadModule = await import("../../components/Head")
   const head = HeadModule.default()
 
-  // Find footer from component registry (loaded during plugin instantiation)
-  const footerEntry = json.plugins.find(
-    (e) => e.enabled && extractPluginName(e.source) === "footer",
-  )
-  let footer: QuartzComponent | undefined
-  if (footerEntry) {
-    // Try registry lookup: plugin name ("footer") or export name ("Footer")
-    const footerReg = componentRegistry.get("footer") ?? componentRegistry.get("Footer")
-    if (footerReg) {
-      if (typeof footerReg.component === "function" && !("displayName" in footerReg.component)) {
-        // It's a constructor — use registry cache for consistent instances
-        const footerOverrides = componentRegistry.getOptionOverrides("footer")
-        const opts = { ...footerEntry.options, ...footerOverrides }
-        footer = componentRegistry.instantiate(
-          footerReg.component as QuartzComponentConstructor,
-          Object.keys(opts).length > 0 ? opts : undefined,
-        )
-      } else {
-        footer = footerReg.component as QuartzComponent
-      }
-    }
+  // Custom "built-in" footer (quartz/components/Footer.tsx). It supersedes the
+  // community footer plugin so the site footer can carry both EN/ZH versions,
+  // and is registered so its styles are emitted with the other components.
+  const FooterModule = await import("../../components/Footer")
+  const FooterConstructor = FooterModule.default as QuartzComponentConstructor
+  if (!componentRegistry.get("custom-footer") && !componentRegistry.get("Footer")) {
+    componentRegistry.register("custom-footer", FooterConstructor, "builtin")
   }
+  const footerOpts = {
+    links: {
+      GitHub: "https://github.com/kodxity/",
+      Linkedin: "http://linkedin.com/in/kodxity/",
+      Website: "https://kodxity.github.io/",
+      Twitter: "http://twitter.com/kodxity",
+    },
+  }
+  const footer = componentRegistry.instantiate(FooterConstructor, footerOpts)
 
   // Apply structural defaults
   defaultLayout.head = head

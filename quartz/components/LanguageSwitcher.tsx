@@ -367,6 +367,18 @@ LanguageSwitcher.afterDOMLoaded = `
     } else {
       restoreChrome()
     }
+    localizeFooter(lang)
+  }
+
+  // Show the matching footer language block (both EN and ZH are rendered in
+  // the markup; the one for the active language is made visible).
+  function localizeFooter(lang) {
+    const wantZh = familyOf(lang) === "zh"
+    const blocks = document.querySelectorAll("footer .footer-credit[data-lang]")
+    for (const el of blocks) {
+      const isZh = (el.getAttribute("data-lang") || "") === "zh"
+      el.style.display = isZh === wantZh ? "block" : "none"
+    }
   }
 
   function applyLanguage(lang, { persist = false } = {}) {
