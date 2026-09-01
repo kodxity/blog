@@ -7,7 +7,7 @@ Hi! I'm [kodxity](https://codeforces.com/profile/kodxity) from the [[University 
 My dream is to one day make ICPC WF!
 
 > [!question]- How is the marked difficulty defined?
-> `Easy`: I drink some porridge, glance at problem, I think this problem doesn't need any technique! <br>
+> `Easy`: I drink some porridge, instasolve the problem, this problem didn't require any technique! <br>
 > `Medium`: Solved it entirely by myself, but took a while <br>
 > `Hard`: Didn't solve it entirely myself <br>
 > `WTF`: I got cooked <br>
